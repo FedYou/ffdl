@@ -1,0 +1,9 @@
+{
+  "name": "ffdl",
+  "version": "1.0.0",
+  "description": "Fast Files Download",
+  "main": "index.js",
+  "keywords": [],
+  "author": "FedYou",
+  "license": "MIT"
+}
