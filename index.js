@@ -92,7 +92,6 @@ async function ffdl(on = {}, options = {}) {
 
   return new Promise((resolve, reject) => {
     const _args = createArgs(options)
-    console.log(_args)
     const _process = spawn(command, _args)
     _process.stdout.on('data', (chunk) => {
       const chunkLines = chunk.toString().split('\n')
