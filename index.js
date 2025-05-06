@@ -27,7 +27,7 @@ function parseStdout(string = '') {
     return {
       id: undefined,
       completedLenght: undefined,
-      totolLenght: undefined,
+      totalLenght: undefined,
       progress: 0,
       cn: 0,
       speed: undefined,
