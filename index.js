@@ -39,7 +39,7 @@ function parseStdout(string = '') {
 
   const [id, progress, cn, speed, eta] = content.split(' ')
   let [lenghts, _percent] = progress.split('(')
-  let percent = parseInt(_percent.replace('%').replace(')'))
+  let percent = parseInt((_percent ?? '').replace('%').replace(')'))
   let [completedLenght, totalLenght] = lenghts.split('/')
 
   return {
