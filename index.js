@@ -53,8 +53,31 @@ function parseStdout(string = '') {
   }
 }
 
-function createArgs(options = {}) {
+function createArgs(
+  options = {
+    maxConnectionPerServer,
+    minSplitSize,
+    split,
+    fileName,
+    dir,
+    url,
+  }
+) {
   const _args = [...args]
+
+  _args.push(`-x${options.maxConnectionPerServer ?? 16}`)
+  _args.push(`-s${options.split ?? 16}`)
+  _args.push(`-k${options.minSplitSize ?? 1}M`)
+  if (options.fileName) {
+    _args.push(`--out=${options.fileName}`)
+  }
+  if (options.dir) {
+    _args.push(`--dir=${options.dir}`)
+  }
+
+  if (options.url) {
+    _args.push(options.url)
+  }
   return _args
 }
 
@@ -69,6 +92,7 @@ async function ffdl(on = {}, options = {}) {
 
   return new Promise((resolve, reject) => {
     const _args = createArgs(options)
+    console.log(_args)
     const _process = spawn(command, _args)
     _process.stdout.on('data', (chunk) => {
       const chunkLines = chunk.toString().split('\n')
@@ -85,4 +109,5 @@ async function ffdl(on = {}, options = {}) {
     })
   })
 }
+
 module.exports = ffdl
