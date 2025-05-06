@@ -25,13 +25,13 @@ function colonSymbolName(string = '') {
 function parseStdout(string = '') {
   if (!string.startsWith('[') && !string.endsWith(']')) {
     return {
-      id: '#----',
-      completedLenght: '---',
-      totolLenght: '---',
+      id: undefined,
+      completedLenght: undefined,
+      totolLenght: undefined,
       progress: 0,
       cn: 0,
-      speed: '---',
-      eta: '---',
+      speed: undefined,
+      eta: undefined,
     }
   }
 
