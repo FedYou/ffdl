@@ -72,7 +72,7 @@ Minimum size (which is MB) of each part into which the file is divided.
 ### `split`
 
 **Type:** `number`  
-Default:\*\* `16`  
+**Default:** `16`  
 Number of parts into which the file will be divided during download.
 
 ---
