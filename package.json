@@ -4,6 +4,7 @@
   "description": "Fast Files Download",
   "main": "index.js",
   "type": "commonjs",
+  "types": "./index.d.ts",
   "keywords": [],
   "author": "FedYou",
   "license": "MIT"
