@@ -28,7 +28,7 @@ function parseStdout(string = '') {
       id: undefined,
       completedLenght: undefined,
       totalLenght: undefined,
-      progress: 0,
+      percent: 0,
       cn: 0,
       speed: undefined,
       eta: undefined

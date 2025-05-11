@@ -12,9 +12,9 @@ interface Stdout {
    */
   totalLength: string | undefined
   /**
-   * The progress of the download.
+   * The percentage of the download.
    */
-  progress: number
+  percent: number
   /**
    * The number of connections.
    */
