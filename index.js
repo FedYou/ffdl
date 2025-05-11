@@ -81,30 +81,30 @@ function createArgs(
   return _args
 }
 
-async function ffdl(on = {}, options = {}) {
-  const _on = {
-    update: () => {},
-    error: () => {},
-    finished: () => {},
-    close: () => {},
-    ...on,
-  }
-
+async function ffdl({
+  options = {},
+  onUpdate = () => {},
+  onFinished = () => {},
+  onError = () => {},
+  onClose = () => {},
+}) {
   return new Promise((resolve, reject) => {
     const _args = createArgs(options)
     const _process = spawn(command, _args)
     _process.stdout.on('data', (chunk) => {
       const chunkLines = chunk.toString().split('\n')
-      _on.update(parseStdout(chunkLines[0]))
+      onUpdate(parseStdout(chunkLines[0]))
+    })
+    _process.on('error', (err) => {
+      onError(err)
+      reject(err.message)
     })
     _process.on('close', (code) => {
+      onClose(code)
       if (code === 0) {
-        _on.finished()
-      } else {
-        _on.error(code)
-        reject(code)
+        onFinished()
+        resolve()
       }
-      resolve(code)
     })
   })
 }
