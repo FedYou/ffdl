@@ -4,7 +4,7 @@ const headers = [
   'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36',
   'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   'Accept-Language: en-us,en;q=0.5',
-  'Sec-Fetch-Mode: navigate',
+  'Sec-Fetch-Mode: navigate'
 ]
 
 const command = 'aria2c'
@@ -15,7 +15,7 @@ const args = [
   '--summary-interval=1',
   '--max-resume-failure-tries=4',
   '--allow-overwrite',
-  ...headers.map((header) => `--header="${header}"`),
+  ...headers.map((header) => `--header="${header}"`)
 ]
 
 function colonSymbolName(string = '') {
@@ -31,7 +31,7 @@ function parseStdout(string = '') {
       progress: 0,
       cn: 0,
       speed: undefined,
-      eta: undefined,
+      eta: undefined
     }
   }
 
@@ -49,7 +49,7 @@ function parseStdout(string = '') {
     percent,
     cn: parseInt(colonSymbolName(cn)),
     speed: colonSymbolName(speed),
-    eta: colonSymbolName(eta),
+    eta: colonSymbolName(eta)
   }
 }
 
@@ -60,7 +60,7 @@ function createArgs(
     split,
     fileName,
     dir,
-    url,
+    url
   }
 ) {
   const _args = [...args]
@@ -86,7 +86,7 @@ async function ffdl({
   onUpdate = () => {},
   onFinished = () => {},
   onError = () => {},
-  onClose = () => {},
+  onClose = () => {}
 }) {
   return new Promise((resolve, reject) => {
     const _args = createArgs(options)
